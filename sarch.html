@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Form</title>
+</head>
+<body>
+  <!-- a daynamic form to make incrige velue -->
+
+
+
+
+  <!-- <label for="formCount">Number of Forms:</label>
+  <input type="number" id="formCount" min="0" value="0" onchange="updateForms()">
+  <div id="formContainer"></div> -->
+
+
+
+
+
+
+
+    <input type="text" id="searchInput" placeholder="Search blog posts">
+    <ul id="searchResults"></ul>
+
+
+
+
+
+
+
+  <script>
+
+    // Sample array of blog post titles
+const blogPosts = [
+  "How to Create a Website",
+  "Top 10 JavaScript Frameworks",
+  "Web Design Best Practices",
+  "SEO Tips for Beginners",
+  "Introduction to Blogging"
+];
+
+// Function to perform the search and update the results
+function search() {
+  const searchTerm = document.getElementById("searchInput").value.toLowerCase(); // Convert to lowercase for case-insensitive search
+  const searchResults = document.getElementById("searchResults");
+  
+  // Clear previous search results
+  searchResults.innerHTML = "";
+
+  if (searchTerm.trim() === "") {
+    return; // If the search query is empty, don't display anything
+  }
+
+  const filteredPosts = blogPosts.filter(post => post.toLowerCase().includes(searchTerm));
+  
+  if (filteredPosts.length === 0) {
+    searchResults.innerHTML = "<li>No results found</li>";
+  } else {
+    filteredPosts.forEach(post => {
+      const li = document.createElement("li");
+      li.textContent = post;
+      searchResults.appendChild(li);
+    });
+  }
+}
+
+// Add an event listener to trigger the search when the input changes
+document.getElementById("searchInput").addEventListener("input", search);
+
+
+
+
+
+
+
+    // a daynamic form to make incrige velue javascript part 
+
+
+    // function updateForms() {
+    //   const formCount = parseInt(document.getElementById("formCount").value);
+    //   const formContainer = document.getElementById("formContainer");   
+
+    //   while (formContainer.firstChild) {
+    //     formContainer.removeChild(formContainer.firstChild);
+    //     console.log("remove forms" + formCount);
+    //   }
+
+    //   for (let i = 0; i < formCount; i++) {
+    //     const form = document.createElement("form");
+    //     form.innerHTML = `
+    //       <h2>Simple Form ${i + 1}</h2>
+    //       <label for="inputField${i}">Input Field:</label>
+    //       <input type="text" id="inputField${i}" name="inputField${i}">
+    //     `;
+    //     formContainer.appendChild(form);
+    //     console.log("add forms" + formCount);
+    //   }
+    // }
+  </script>
+</body>
+</html>
